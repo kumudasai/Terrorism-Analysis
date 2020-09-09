@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
+
 """
-Created on Tue Sep  8 22:12:05 2020
+Created on Mon Sep  7 22:12:05 2020
 
 @author: kumud
 """
@@ -16,14 +16,14 @@ import plotly.express as px
 from dash.exceptions import PreventUpdate
 
 
-# Global variables
+
 app = dash.Dash()
 
 
 def load_data():
   dataset_name = "global_terror1.csv"
 
-  #this line we use to hide some warnings which gives by pandas
+ 
   pd.options.mode.chained_assignment = None
   
   global df
@@ -120,7 +120,7 @@ def load_data():
 def open_browser():
   webbrowser.open_new('http://127.0.0.1:8050/')
 
-# Layout of your page
+
 def app_ui():
   main_layout = html.Div(
       style = {'backgroundColor':'#25383C'},
@@ -297,10 +297,10 @@ def def_app_ui(Tabs, month_value, date_value,region_value,country_value,state_va
         
         print("Data Type of year value = " , str(type(year_value)))
         print("Data of year value = " , year_value)
-        # year_filter
+        
         year_range = range(year_value[0], year_value[1]+1)
         new_df = df[df["iyear"].isin(year_range)]
-        # month_filter
+
         if month_value==[] or month_value is None:
             pass
         else:
@@ -309,7 +309,7 @@ def def_app_ui(Tabs, month_value, date_value,region_value,country_value,state_va
             else:
                 new_df = new_df[new_df["imonth"].isin(month_value)
                                 & (new_df["iday"].isin(date_value))]
-        # region, country, state, city filter
+        
         if region_value==[] or region_value is None:
             pass
         else:
